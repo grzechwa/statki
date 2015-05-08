@@ -9,12 +9,15 @@ import java.io.*;
  */
 public class Gra implements Serializable{
         
-        private int sprId;                                          // przypisana zostanie wartosc id znalezionego metoda spr
-        private int aktTrafionyId;                                  // wartos id zwracanaego przez metode sprJakiStatkeTrafiony                                        
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		private int sprId;                // przypisana zostanie wartosc id znalezionego metoda spr
+        private int aktTrafionyId;        // wartos id zwracanaego przez metode sprJakiStatkeTrafiony                                        
         private int przerwij1 = 0; 
         private int przerwij2 		 = 0;
 
-        private boolean kontynuuj 	= true;   
         boolean ustrzelony 			= false;
         boolean wTrakcieStrzelania 	= false;
         boolean trafiony 			= false;
@@ -226,6 +229,28 @@ public class Gra implements Serializable{
                 
             } while ((graLicz < 100) && (przerwij1 > 0) && (przerwij2 > 0));
         }
+        public void jazda(){}
+
+    private static int wypelnijArg 			= 0;
+    static Plansza plansza1 = new Plansza();
+    static Plansza plansza2 = new Plansza();
+
+         // menu item - domyslna gra
+        public void gra() throws InterruptedException, IOException{
+                   
+            plansza1.wypelnij(wypelnijArg);
+            plansza2.wypelnij(wypelnijArg);
+            
+            plansza1.rozmiesc();
+            plansza2.rozmiesc();  
+
+            strzalyWpelnij(plansza1); 
+            start(plansza1, plansza2, 1);
+
+        }
+
+
+        
         
         /**
          * Zapewnia po strzale czyszczenie planszy i zablokowanie dalszych ruchów.
@@ -270,7 +295,6 @@ public class Gra implements Serializable{
             
             System.out.print("Teraz strzela maszyna: ");
             if(przerwij2==0){
-                kontynuuj = false;
             }
                 try{           
                 int liczba = los.nextInt(plansza.pelnaListaStrzalow.size()-1);
@@ -294,7 +318,6 @@ public class Gra implements Serializable{
             catch(Exception ex){
 
             System.out.println("Koniec strzelania");
-                kontynuuj = false;
             }
         }
         
@@ -549,9 +572,9 @@ public class Gra implements Serializable{
                 
                 if (val.equals("z")) {
                     ok = false;
-                    Archiwum.zapisPlansza("plansza1.dat", Menu.plansza1);
-                    Archiwum.zapisPlansza("plansza2.dat", Menu.plansza2);
-                    Archiwum.zapisGra("gra.dat", Menu.gra);
+                    // Archiwum.zapisPlansza("plansza1.dat", Menu.plansza1);
+                    // Archiwum.zapisPlansza("plansza2.dat", Menu.plansza2);
+                    // Archiwum.zapisGra("gra.dat", Menu.gra);
                     Menu.zapis = true;
                     System.out.println("        Zapisano");
                     continue;
