@@ -7,7 +7,8 @@ import java.util.*;
  */
 public class Statki {
    
-    public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws InterruptedException, 
+		                                 IOException, ClassNotFoundException {
         Menu gra = new Menu();
         gra.menu();
     }

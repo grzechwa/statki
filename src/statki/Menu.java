@@ -38,7 +38,7 @@ public class Menu {
 
         wej.close();
     }
-    
+ /*   
     public void wczytajGre(	Plansza plansza1, 
     						Plansza plansza2, 
     						Gra gra) throws FileNotFoundException, IOException, ClassNotFoundException, InterruptedException{
@@ -56,7 +56,7 @@ public class Menu {
                     System.out.println("Wystapil blad, nie mozna wczytac gry!");
                 }
     }
-    
+ */
     // menu item - domyslna gra
     public void gra() throws InterruptedException, IOException{
                    
