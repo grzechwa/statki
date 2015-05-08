@@ -40,7 +40,10 @@ public class Gra implements Serializable{
         private int strzalGLicz = 0;             // G - gracz
         
         private int arg;                         // argument wyboru gr
-        
+        static Plansza plansza1 = new Plansza();
+        static Plansza plansza2 = new Plansza();
+
+       
         
         /**
          * Konstruktor.
@@ -66,7 +69,8 @@ public class Gra implements Serializable{
          * @param plansza2
          * @throws InterruptedException 
          */
-        public void start(Plansza plansza1, Plansza plansza2, int arg) throws InterruptedException, IOException{
+        public void start(Plansza plansza1, Plansza plansza2, int arg) 
+        						throws InterruptedException, IOException{
             boolean kontynuuj = true;
             strzal = new Integer[1][2];
             strzalyWpelnij(plansza2);
@@ -229,17 +233,12 @@ public class Gra implements Serializable{
                 
             } while ((graLicz < 100) && (przerwij1 > 0) && (przerwij2 > 0));
         }
-        public void jazda(){}
-
-    private static int wypelnijArg 			= 0;
-    static Plansza plansza1 = new Plansza();
-    static Plansza plansza2 = new Plansza();
 
          // menu item - domyslna gra
         public void gra() throws InterruptedException, IOException{
                    
-            plansza1.wypelnij(wypelnijArg);
-            plansza2.wypelnij(wypelnijArg);
+            plansza1.wypelnij();
+            plansza2.wypelnij();
             
             plansza1.rozmiesc();
             plansza2.rozmiesc();  
@@ -249,9 +248,6 @@ public class Gra implements Serializable{
 
         }
 
-
-        
-        
         /**
          * Zapewnia po strzale czyszczenie planszy i zablokowanie dalszych ruchów.
          * @param plansza 
@@ -572,9 +568,6 @@ public class Gra implements Serializable{
                 
                 if (val.equals("z")) {
                     ok = false;
-                    // Archiwum.zapisPlansza("plansza1.dat", Menu.plansza1);
-                    // Archiwum.zapisPlansza("plansza2.dat", Menu.plansza2);
-                    // Archiwum.zapisGra("gra.dat", Menu.gra);
                     Menu.zapis = true;
                     System.out.println("        Zapisano");
                     continue;

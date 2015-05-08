@@ -193,7 +193,7 @@ public class Plansza implements Serializable{
         /**
          * Wypelnia tabliece wartosciami liczbowymi.
          */
-        public void wypelnij(int arg) {
+        public void wypelnij() {
             plansza = new int[getSizePlansza()][getSizePlansza()];
             int fragment1 = 2;           
             int fragment2 = 5;
